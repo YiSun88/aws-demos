@@ -36,10 +36,5 @@ npm install pm2@latest -g
 pm2 start app.js
 
 
-# Temporary Solution for cannot reach the web app in EC2 in browser (https://stackoverflow.com/questions/10253484/cant-access-site-on-ec2-instance-via-public-ip):
-# Add inbound rule for allow all traffic to all ports via my ip
 # Manually change the url to http to access the app.
-# Load Balancer seems to be a promising fix for this issue
-
-
-## Plan-B: Modify the Dev-op unit Elastic Beanstock App to connect it to DynamoDB 
+# Probably due to Chrome defaults url request to https protocol. Load Balancer seems to be a promising fix for this issue
