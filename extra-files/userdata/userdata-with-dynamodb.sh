@@ -13,13 +13,13 @@ echo "Installing NodeJS"
 touch .bashrc
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . /.nvm/nvm.sh
-nvm install --lts
+nvm install 16
 
 # Clone website code
 echo "Cloning website"
 mkdir -p /demo-website
 cd /demo-website
-git clone https://github.com/academind/aws-demos.git .
+git clone https://github.com/YiSun88/aws-demos.git .
 cd dynamic-website-with-dynamodb
 
 # Install dependencies
@@ -34,3 +34,12 @@ iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 3000
 echo "Installing & starting pm2"
 npm install pm2@latest -g
 pm2 start app.js
+
+
+# Temporary Solution for cannot reach the web app in EC2 in browser (https://stackoverflow.com/questions/10253484/cant-access-site-on-ec2-instance-via-public-ip):
+# Add inbound rule for allow all traffic to all ports via my ip
+# Manually change the url to http to access the app.
+# Load Balancer seems to be a promising fix for this issue
+
+
+## Plan-B: Modify the Dev-op unit Elastic Beanstock App to connect it to DynamoDB 
